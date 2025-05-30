@@ -1,0 +1,1054 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="keywords"
+        content="fancy text generator, cool font generator, stylish text, creepy text, reversed text, upside down text, binary text converter, glitch text, leet speak generator, emoji text, unicode text converter, aesthetic fonts, decorative fonts, fancy letters, stylish alphabets, superscript text, subscript generator, weird text, glitchy text, cursed text, ascii font generator, text transformer, online fancy font maker, fancy Instagram bio text, TikTok fonts, Discord fancy text, fancy username generator">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fancy Text Generator ✨ (ᴄᴏᴘʏ & ᴘᴀsᴛᴇ) </title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2280%22>✨</text></svg>">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(135deg, #ffffff, #ffffff);
+            min-height: 100vh;
+        }
+
+        .dark {
+            background: linear-gradient(135deg, #000000, #000000);
+            color: #f1f5f9;
+        }
+
+        .text-card {
+            transition: all 0.3s ease;
+        }
+
+        .text-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        }
+
+        .copy-btn {
+            transition: all 0.2s ease;
+        }
+
+        .copy-btn:hover {
+            transform: scale(1.05);
+        }
+
+        .copy-notification {
+            position: fixed;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            padding: 10px 20px;
+            background-color: #4c1d95;
+            color: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transition: opacity 0.3s;
+            z-index: 50;
+        }
+
+        .show-notification {
+            opacity: 1;
+        }
+
+        .theme-switch {
+            position: relative;
+            width: 60px;
+            height: 30px;
+        }
+
+        .theme-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: .4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 22px;
+            width: 22px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: .4s;
+            border-radius: 50%;
+        }
+
+        input:checked+.slider {
+            background-color: #8b5cf6;
+        }
+
+        input:checked+.slider:before {
+            transform: translateX(30px);
+        }
+
+        /* Logo Animation */
+        .logo-container {
+            position: relative;
+            display: inline-block;
+            padding: 15px 20px;
+            background: #ffffff;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+            border: 2px solid #8b5cf6;
+        }
+
+        .dark .logo-container {
+            background: #1e293b;
+            border-color: #E94A9E;
+        }
+
+        .logo-text {
+            display: inline-block;
+            position: relative;
+        }
+
+        @keyframes float {
+
+            0%,
+            100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-10px);
+            }
+        }
+
+        @keyframes sparkle {
+
+            0%,
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 0.6;
+                transform: scale(0.8);
+            }
+        }
+
+        .sparkle {
+            position: absolute;
+            animation: sparkle 2s ease-in-out infinite;
+            z-index: 10;
+            font-size: 1.2em;
+        }
+
+        .sparkle-1 {
+            top: -15px;
+            left: 10px;
+            animation-delay: 0s;
+        }
+
+        .sparkle-2 {
+            top: -5px;
+            right: -15px;
+            animation-delay: 0.3s;
+        }
+
+        .sparkle-3 {
+            bottom: -10px;
+            right: 20px;
+            animation-delay: 0.7s;
+        }
+
+        .sparkle-4 {
+            bottom: 0;
+            left: -10px;
+            animation-delay: 1s;
+        }
+
+        .letter {
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+        }
+
+        .letter:nth-child(1) {
+            animation-delay: 0.1s;
+        }
+
+        .letter:nth-child(2) {
+            animation-delay: 0.2s;
+        }
+
+        .letter:nth-child(3) {
+            animation-delay: 0.3s;
+        }
+
+        .letter:nth-child(4) {
+            animation-delay: 0.4s;
+        }
+
+        .letter:nth-child(5) {
+            animation-delay: 0.5s;
+        }
+
+        .letter:nth-child(6) {
+            animation-delay: 0.6s;
+        }
+
+        .letter:nth-child(7) {
+            animation-delay: 0.7s;
+        }
+
+        .letter:nth-child(8) {
+            animation-delay: 0.8s;
+        }
+
+        .letter:nth-child(9) {
+            animation-delay: 0.9s;
+        }
+
+        .letter:nth-child(10) {
+            animation-delay: 1.0s;
+        }
+
+        .fancy-text-content {
+            font-size: 1.25rem;
+            word-break: break-word;
+        }
+
+        /* Input focus effect */
+        .input-container {
+            position: relative;
+        }
+
+        .input-container::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, #8b5cf6, #3b82f6);
+            transition: width 0.3s ease;
+        }
+
+        .input-container:focus-within::after {
+            width: 100%;
+        }
+
+        /* Style header colors */
+        .style-header {
+            padding: 8px 12px;
+            border-radius: 6px 6px 0 0;
+            font-weight: 600;
+            color: white;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+
+<body class="light">
+    <div class="container mx-auto px-4 py-8">
+        <header class="flex flex-col md:flex-row justify-between items-center mb-10">
+            <div class="flex items-center mb-4 md:mb-0">
+                <!-- <div class="logo-container"> -->
+                <div class="logo-text text-3xl md:text-4xl font-bold text-purple-600 dark:text-purple-400">
+                    <span class="letter">F</span>
+                    <span class="letter">a</span>
+                    <span class="letter">n</span>
+                    <span class="letter">c</span>
+                    <span class="letter">y</span>
+                    <span class="letter">&nbsp;</span>
+                    <span class="letter">T</span>
+                    <span class="letter">e</span>
+                    <span class="letter">x</span>
+                    <span class="letter">t</span>
+                </div>
+                <!-- </div> -->
+            </div>
+            <div class="flex items-center space-x-3">
+                <span class="text-gray-600 dark:text-gray-500">Light</span>
+                <label class="theme-switch">
+                    <input type="checkbox" id="theme-toggle">
+                    <span class="slider"></span>
+                </label>
+                <span class="text-gray-600 dark:text-gray-500">Dark</span>
+            </div>
+        </header>
+
+        <div class="bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6 mb-8 transition-all duration-300">
+            <div class="mb-6">
+                <label for="input-text" class="block text-sm font-medium mb-2 text-gray-700 dark:text-gray-200">Enter
+                    your text</label>
+                <div class="flex input-container">
+                    <input type="text" id="input-text" placeholder="Type something fancy..."
+                        class="w-full px-4 py-3 rounded-lg border border-gray-300 dark:border-gray-600 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all duration-300 dark:bg-gray-700 dark:text-white">
+                </div>
+            </div>
+        </div>
+
+        <div class="bg-white/30 dark:bg-gray-800/30 backdrop-blur-md rounded-xl p-4">
+            <div id="results-container" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-10">
+                <!-- Fancy text results will be generated here -->
+            </div>
+        </div>
+        <div class="max-w-4xl mx-auto px-6 pt-24 pb-12">
+
+            <section class="mb-8 space-y-4">
+                <p>
+                    Looking to convert plain text into stylish, eye-catching fonts? The <strong>FancyTxt.top Fancy Text
+                        Generator</strong> is your go-to tool for transforming ordinary text into decorative, cool, and
+                    creative typography!
+                </p>
+                <p>
+                    With the FancyTxt.top tool, you can instantly generate unique font styles that make your content
+                    stand out.
+                </p>
+                <p>
+                    It’s perfect for enhancing social media captions, digital invitations, graphic design projects, and
+                    more!
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold mb-4">What Can the Fancy Text Generator Do?</h2>
+                <p class="mb-2">
+                    This online fancy text converter helps you upgrade the visual appeal of your text. Simply enter your
+                    content, and the tool will convert it into a variety of stylish fonts.
+                </p>
+                <p>
+                    Choose from a wide selection of aesthetic, elegant, and artistic font styles. Once you're satisfied,
+                    just click the ‘Copy’ button to use your fancy text anywhere.
+                </p>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold mb-4">Key Features of FancyTxt.top</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Text input field:</strong> Enter your regular text and watch it transform into multiple
+                        fancy font styles in real-time.</li>
+                    <li><strong>Font variety:</strong> Access a diverse range of fonts including Small Caps, Italic,
+                        Bold, Cursive, Gothic, and more.</li>
+                </ul>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold mb-4">How to Use the Fancy Text Generator</h2>
+                <ol class="list-decimal pl-6 space-y-4">
+                    <li>
+                        <strong>Enter your text:</strong> Type or paste your message into the input box. It supports
+                        both short and long text entries.
+                    </li>
+                    <li>
+                        <strong>Pick a font style:</strong> Browse through the available font options such as cursive,
+                        bold, bubble, or aesthetic fonts.
+                    </li>
+                    <li>
+                        <strong>Copy your styled text:</strong> Click the ‘Copy’ button next to your favorite font to
+                        save it for use on social media, websites, or documents.
+                    </li>
+                    <li>
+                        <strong>Edit and regenerate:</strong> Make any changes to your input and instantly see the
+                        updated fancy text.
+                    </li>
+                </ol>
+            </section>
+
+            <section class="mb-8">
+                <h2 class="text-2xl font-semibold mb-4">Why Use the Fancy Text Generator?</h2>
+                <ul class="list-disc pl-6 space-y-2">
+                    <li><strong>Enhance creativity:</strong> Add flair to your content with visually appealing fonts.
+                    </li>
+                    <li><strong>Professional results:</strong> Ideal for marketing materials, email headers, and digital
+                        branding.</li>
+                    <li><strong>Wide font selection:</strong> Keep your content fresh with a variety of unique styles.
+                    </li>
+                    <li><strong>Time-saving:</strong> Instantly generate styled text without needing design software.
+                    </li>
+                </ul>
+            </section>
+
+            <section>
+                <h2 class="text-2xl font-semibold mb-4">Conclusion</h2>
+                <p>
+                    Don’t settle for boring text—elevate your writing with the FancyTxt.top Fancy Text Generator.
+                    Whether you're designing a post, writing a message, or branding your content, this tool helps you
+                    create beautiful, artistic, and stylish text in seconds. Try it now and give your words a visual
+                    upgrade!
+                </p>
+            </section>
+
+        </div>
+
+        <footer
+            class="mt-10 py-6 text-center text-gray-500 dark:text-gray-400 border-t border-gray-200 dark:border-gray-700">
+
+            <p>
+                  Made with 🕙️ by
+                  <a href="https://17x.in" target="_blank" rel="noopener noreferrer"
+                    class="font-semibold text-purple-600 dark:text-purple-400">17x</a>
+            </p>
+
+        </footer>
+    </div>
+
+    <div id="copy-notification" class="copy-notification">
+        <i class="fas fa-check mr-2"></i> Copied to clipboard!
+    </div>
+
+    <script>
+        // DOM Elements
+        const inputText = document.getElementById('input-text');
+        const resultsContainer = document.getElementById('results-container');
+        const copyNotification = document.getElementById('copy-notification');
+        const themeToggle = document.getElementById('theme-toggle');
+        const body = document.body;
+
+        // Fancy text transformations with colors
+        const fancyTextStyles = [
+            {
+                name: '𝓕𝓪𝓷𝓬𝔂 𝓒𝓾𝓻𝓼𝓲𝓿𝓮',
+                color: 'linear-gradient(135deg, #ec4899, #8b5cf6)',
+                transform: text => {
+                    const cursiveMap = {
+                        'a': '𝓪', 'b': '𝓫', 'c': '𝓬', 'd': '𝓭', 'e': '𝓮', 'f': '𝓯', 'g': '𝓰', 'h': '𝓱',
+                        'i': '𝓲', 'j': '𝓳', 'k': '𝓴', 'l': '𝓵', 'm': '𝓶', 'n': '𝓷', 'o': '𝓸', 'p': '𝓹',
+                        'q': '𝓺', 'r': '𝓻', 's': '𝓼', 't': '𝓽', 'u': '𝓾', 'v': '𝓿', 'w': '𝔀', 'x': '𝔁',
+                        'y': '𝔂', 'z': '𝔃', 'A': '𝓐', 'B': '𝓑', 'C': '𝓒', 'D': '𝓓', 'E': '𝓔', 'F': '𝓕',
+                        'G': '𝓖', 'H': '𝓗', 'I': '𝓘', 'J': '𝓙', 'K': '𝓚', 'L': '𝓛', 'M': '𝓜', 'N': '𝓝',
+                        'O': '𝓞', 'P': '𝓟', 'Q': '𝓠', 'R': '𝓡', 'S': '𝓢', 'T': '𝓣', 'U': '𝓤', 'V': '𝓥',
+                        'W': '𝓦', 'X': '𝓧', 'Y': '𝓨', 'Z': '𝓩'
+                    };
+                    return text.split('').map(char => cursiveMap[char] || char).join('');
+                }
+            },
+            {
+                name: '𝔉𝔯𝔞𝔨𝔱𝔲𝔯',
+                color: 'linear-gradient(135deg, #3b82f6, #10b981)',
+                transform: text => {
+                    const frakturMap = {
+                        'a': '𝔞', 'b': '𝔟', 'c': '𝔠', 'd': '𝔡', 'e': '𝔢', 'f': '𝔣', 'g': '𝔤', 'h': '𝔥',
+                        'i': '𝔦', 'j': '𝔧', 'k': '𝔨', 'l': '𝔩', 'm': '𝔪', 'n': '𝔫', 'o': '𝔬', 'p': '𝔭',
+                        'q': '𝔮', 'r': '𝔯', 's': '𝔰', 't': '𝔱', 'u': '𝔲', 'v': '𝔳', 'w': '𝔴', 'x': '𝔵',
+                        'y': '𝔶', 'z': '𝔷', 'A': '𝔄', 'B': '𝔅', 'C': 'ℭ', 'D': '𝔇', 'E': '𝔈', 'F': '𝔉',
+                        'G': '𝔊', 'H': 'ℌ', 'I': 'ℑ', 'J': '𝔍', 'K': '𝔎', 'L': '𝔏', 'M': '𝔐', 'N': '𝔑',
+                        'O': '𝔒', 'P': '𝔓', 'Q': '𝔔', 'R': 'ℜ', 'S': '𝔖', 'T': '𝔗', 'U': '𝔘', 'V': '𝔙',
+                        'W': '𝔚', 'X': '𝔛', 'Y': '𝔜', 'Z': 'ℨ'
+                    };
+                    return text.split('').map(char => frakturMap[char] || char).join('');
+                }
+            }, {
+                name: 'Zalgo',
+                color: 'linear-gradient(135deg, #991b1b, #4c1d95)',
+                transform: text => {
+                    const zalgoUp = ['̍', '̎', '̄', '̅', '̿', '̑', '̆', '̐', '͒', '͗', '͑', '̇', '̈', '̊', '͂', '̓', '̈', '͊', '͋', '͌', '̃', '̂', '̌', '͐'];
+                    const zalgoMid = ['̕', '̛', '̀', '́', '̋', '̏', '̒', '̓', '̔', '̽', '̉', 'ͣ', 'ͤ', 'ͥ', 'ͦ', 'ͧ', 'ͨ', 'ͩ', 'ͪ', 'ͫ', 'ͬ', 'ͭ', 'ͮ', 'ͯ'];
+                    const zalgoDown = ['̖', '̗', '̘', '̙', '̜', '̝', '̞', '̟', '̠', '̤', '̥', '̦', '̩', '̪', '̫', '̬', '̭', '̮', '̯', '̰', '̱', '̲', '̳'];
+                    const rand = arr => arr[Math.floor(Math.random() * arr.length)];
+                    return text
+                        .split('')
+                        .map(c => c + rand(zalgoUp) + rand(zalgoMid) + rand(zalgoDown))
+                        .join('');
+                }
+            }, {
+                name: 'Morse Code',
+                color: 'linear-gradient(135deg, #0f172a, #334155)',
+                transform: text => {
+                    const morseMap = {
+                        a: '.-', b: '-...', c: '-.-.', d: '-..', e: '.', f: '..-.',
+                        g: '--.', h: '....', i: '..', j: '.---', k: '-.-', l: '.-..',
+                        m: '--', n: '-.', o: '---', p: '.--.', q: '--.-', r: '.-.',
+                        s: '...', t: '-', u: '..-', v: '...-', w: '.--', x: '-..-',
+                        y: '-.--', z: '--..', ' ': '   '
+                    };
+                    return text
+                        .toLowerCase()
+                        .split('')
+                        .map(c => morseMap[c] || c)
+                        .join(' ');
+                }
+            },
+            {
+                name: 'Clap Style',
+                color: 'linear-gradient(135deg, #ef4444, #f97316)',
+                transform: text => text.trim().split(/\s+/).join(' 👏 ')
+            },
+            {
+                name: 'Creepy',
+                color: 'linear-gradient(135deg, #a855f7, #ec4899)',
+                transform: text => {
+                    const overlays = ['̷', '̴', '͜', '͢', '͠', '̿', '͇', '͈', '͉'];
+                    return text.split('').map(c => c + overlays[Math.floor(Math.random() * overlays.length)]).join('');
+                }
+            },
+            {
+                name: 'Superscript',
+                color: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
+                transform: text => {
+                    const map = {
+                        a: 'ᵃ', b: 'ᵇ', c: 'ᶜ', d: 'ᵈ', e: 'ᵉ', f: 'ᶠ', g: 'ᵍ',
+                        h: 'ʰ', i: 'ⁱ', j: 'ʲ', k: 'ᵏ', l: 'ˡ', m: 'ᵐ', n: 'ⁿ',
+                        o: 'ᵒ', p: 'ᵖ', q: 'ᑫ', r: 'ʳ', s: 'ˢ', t: 'ᵗ', u: 'ᵘ',
+                        v: 'ᵛ', w: 'ʷ', x: 'ˣ', y: 'ʸ', z: 'ᶻ',
+                        A: 'ᴬ', B: 'ᴮ', D: 'ᴰ', E: 'ᴱ', G: 'ᴳ', H: 'ᴴ', I: 'ᴵ',
+                        J: 'ᴶ', K: 'ᴷ', L: 'ᴸ', M: 'ᴹ', N: 'ᴺ', O: 'ᴼ', P: 'ᴾ',
+                        R: 'ᴿ', T: 'ᵀ', U: 'ᵁ', V: 'ⱽ', W: 'ᵂ',
+                        '1': '¹', '2': '²', '3': '³', '0': '⁰'
+                    };
+                    return text.split('').map(c => map[c] || c).join('');
+                }
+            }
+            ,
+            {
+                name: 'Emoji Letters',
+                color: 'linear-gradient(135deg, #ef4444, #f97316)',
+                transform: text => {
+                    const base = {
+                        a: '🅰', b: '🅱', c: '🅲', d: '🅳', e: '🅴', f: '🅵',
+                        g: '🅶', h: '🅷', i: '🅸', j: '🅹', k: '🅺', l: '🅻',
+                        m: '🅼', n: '🅽', o: '🅾', p: '🅿', q: '🆀', r: '🆁',
+                        s: '🆂', t: '🆃', u: '🆄', v: '🆅', w: '🆆', x: '🆇',
+                        y: '🆈', z: '🆉'
+                    };
+                    return text.toLowerCase().split('').map(c => base[c] || c).join('');
+                }
+            }
+            ,
+            {
+                name: 'Binary',
+                color: 'linear-gradient(135deg, #0ea5e9, #3b82f6)',
+                transform: text =>
+                    text
+                        .split('')
+                        .map(c => c.charCodeAt(0).toString(2).padStart(8, '0'))
+                        .join(' ')
+            }, {
+                name: 'Leet Speak',
+                color: 'linear-gradient(135deg, #64748b, #94a3b8)',
+                transform: text =>
+                    text
+                        .replace(/a/gi, '4')
+                        .replace(/e/gi, '3')
+                        .replace(/i/gi, '1')
+                        .replace(/o/gi, '0')
+                        .replace(/s/gi, '5')
+                        .replace(/t/gi, '7')
+            }, {
+                name: 'Reverse',
+                color: 'linear-gradient(135deg, #6366f1, #8b5cf6)',
+                transform: text => text.split('').reverse().join('')
+            }, {
+                name: 'Tiny Text',
+                color: 'linear-gradient(135deg, #10b981, #22c55e)',
+                transform: text => {
+                    const map = {
+                        a: 'ᵃ', b: 'ᵇ', c: 'ᶜ', d: 'ᵈ', e: 'ᵉ', f: 'ᶠ',
+                        g: 'ᵍ', h: 'ʰ', i: 'ᶦ', j: 'ʲ', k: 'ᵏ', l: 'ˡ',
+                        m: 'ᵐ', n: 'ⁿ', o: 'ᵒ', p: 'ᵖ', q: 'ᑫ', r: 'ʳ',
+                        s: 'ˢ', t: 'ᵗ', u: 'ᵘ', v: 'ᵛ', w: 'ʷ', x: 'ˣ',
+                        y: 'ʸ', z: 'ᶻ'
+                    };
+                    return text
+                        .toLowerCase()
+                        .split('')
+                        .map(c => map[c] || c)
+                        .join('')
+                }
+            }, {
+                name: 'Squared',
+                color: 'linear-gradient(135deg, #7c3aed, #9333ea)',
+                transform: text => {
+                    const offset = 0x1f130 - 65;
+                    return text
+                        .toUpperCase()
+                        .split('')
+                        .map(c => {
+                            const code = c.charCodeAt(0);
+                            if (code >= 65 && code <= 90) {
+                                return String.fromCodePoint(offset + code);
+                            }
+                            return c;
+                        })
+                        .join('');
+                }
+            }, {
+                name: 'Braille',
+                color: 'linear-gradient(135deg, #4b5563, #9ca3af)',
+                transform: text => {
+                    const offset = 0x2800;
+                    return text
+                        .toLowerCase()
+                        .split('')
+                        .map(c => {
+                            const code = c.charCodeAt(0);
+                            return code >= 97 && code <= 122 ? String.fromCharCode(offset + (code - 97)) : c;
+                        })
+                        .join('');
+                }
+            },
+            {
+                name: 'Invisible',
+                color: 'linear-gradient(135deg, #d1d5db, #e5e7eb)',
+                transform: text => '‎'.repeat(text.length) // U+200E
+            },
+            {
+                name: 'Katakana Style',
+                color: 'linear-gradient(135deg, #14b8a6, #0ea5e9)',
+                transform: text =>
+                    text.split('')
+                        .map(c => String.fromCharCode(0x30A0 + (Math.random() * 90) | 0))
+                        .join('')
+            },
+            {
+                name: 'Barcode',
+                color: 'linear-gradient(135deg, #111827, #4b5563)',
+                transform: text =>
+                    text.split('')
+                        .map(c => '|'.repeat((c.charCodeAt(0) % 5) + 1))
+                        .join(' ')
+            }
+            ,
+
+
+
+
+
+
+
+
+
+
+
+            {
+                name: '𝕕𝕠𝕦𝕓𝕝𝕖-𝕤𝕥𝕣𝕦𝕔𝕜',
+                color: 'linear-gradient(135deg, #f59e0b, #ef4444)',
+                transform: text => {
+                    const doubleStruckMap = {
+                        'a': '𝕒', 'b': '𝕓', 'c': '𝕔', 'd': '𝕕', 'e': '𝕖', 'f': '𝕗', 'g': '𝕘', 'h': '𝕙',
+                        'i': '𝕚', 'j': '𝕛', 'k': '𝕜', 'l': '𝕝', 'm': '𝕞', 'n': '𝕟', 'o': '𝕠', 'p': '𝕡',
+                        'q': '𝕢', 'r': '𝕣', 's': '𝕤', 't': '𝕥', 'u': '𝕦', 'v': '𝕧', 'w': '𝕨', 'x': '𝕩',
+                        'y': '𝕪', 'z': '𝕫', 'A': '𝔸', 'B': '𝔹', 'C': 'ℂ', 'D': '𝔻', 'E': '𝔼', 'F': '𝔽',
+                        'G': '𝔾', 'H': 'ℍ', 'I': '𝕀', 'J': '𝕁', 'K': '𝕂', 'L': '𝕃', 'M': '𝕄', 'N': 'ℕ',
+                        'O': '𝕆', 'P': 'ℙ', 'Q': 'ℚ', 'R': 'ℝ', 'S': '𝕊', 'T': '𝕋', 'U': '𝕌', 'V': '𝕍',
+                        'W': '𝕎', 'X': '𝕏', 'Y': '𝕐', 'Z': 'ℤ'
+                    };
+                    return text.split('').map(char => doubleStruckMap[char] || char).join('');
+                }
+            },
+            {
+                name: '𝚖𝚘𝚗𝚘𝚜𝚙𝚊𝚌𝚎',
+                color: 'linear-gradient(135deg, #6366f1, #2dd4bf)',
+                transform: text => {
+                    const monospaceMap = {
+                        'a': '𝚊', 'b': '𝚋', 'c': '𝚌', 'd': '𝚍', 'e': '𝚎', 'f': '𝚏', 'g': '𝚐', 'h': '𝚑',
+                        'i': '𝚒', 'j': '𝚓', 'k': '𝚔', 'l': '𝚕', 'm': '𝚖', 'n': '𝚗', 'o': '𝚘', 'p': '𝚙',
+                        'q': '𝚚', 'r': '𝚛', 's': '𝚜', 't': '𝚝', 'u': '𝚞', 'v': '𝚟', 'w': '𝚠', 'x': '𝚡',
+                        'y': '𝚢', 'z': '𝚣', 'A': '𝙰', 'B': '𝙱', 'C': '𝙲', 'D': '𝙳', 'E': '𝙴', 'F': '𝙵',
+                        'G': '𝙶', 'H': '𝙷', 'I': '𝙸', 'J': '𝙹', 'K': '𝙺', 'L': '𝙻', 'M': '𝙼', 'N': '𝙽',
+                        'O': '𝙾', 'P': '𝙿', 'Q': '𝚀', 'R': '𝚁', 'S': '𝚂', 'T': '𝚃', 'U': '𝚄', 'V': '𝚅',
+                        'W': '𝚆', 'X': '𝚇', 'Y': '𝚈', 'Z': '𝚉'
+                    };
+                    return text.split('').map(char => monospaceMap[char] || char).join('');
+                }
+            },
+            {
+                name: '𝐛𝐨𝐥𝐝',
+                color: 'linear-gradient(135deg, #8b5cf6, #db2777)',
+                transform: text => {
+                    const boldMap = {
+                        'a': '𝐚', 'b': '𝐛', 'c': '𝐜', 'd': '𝐝', 'e': '𝐞', 'f': '𝐟', 'g': '𝐠', 'h': '𝐡',
+                        'i': '𝐢', 'j': '𝐣', 'k': '𝐤', 'l': '𝐥', 'm': '𝐦', 'n': '𝐧', 'o': '𝐨', 'p': '𝐩',
+                        'q': '𝐪', 'r': '𝐫', 's': '𝐬', 't': '𝐭', 'u': '𝐮', 'v': '𝐯', 'w': '𝐰', 'x': '𝐱',
+                        'y': '𝐲', 'z': '𝐳', 'A': '𝐀', 'B': '𝐁', 'C': '𝐂', 'D': '𝐃', 'E': '𝐄', 'F': '𝐅',
+                        'G': '𝐆', 'H': '𝐇', 'I': '𝐈', 'J': '𝐉', 'K': '𝐊', 'L': '𝐋', 'M': '𝐌', 'N': '𝐍',
+                        'O': '𝐎', 'P': '𝐏', 'Q': '𝐐', 'R': '𝐑', 'S': '𝐒', 'T': '𝐓', 'U': '𝐔', 'V': '𝐕',
+                        'W': '𝐖', 'X': '𝐗', 'Y': '𝐘', 'Z': '𝐙'
+                    };
+                    return text.split('').map(char => boldMap[char] || char).join('');
+                }
+            },
+            {
+                name: 'ⓑⓤⓑⓑⓛⓔⓢ',
+                color: 'linear-gradient(135deg, #06b6d4, #3b82f6)',
+                transform: text => {
+                    const bubblesMap = {
+                        'a': 'ⓐ', 'b': 'ⓑ', 'c': 'ⓒ', 'd': 'ⓓ', 'e': 'ⓔ', 'f': 'ⓕ', 'g': 'ⓖ', 'h': 'ⓗ',
+                        'i': 'ⓘ', 'j': 'ⓙ', 'k': 'ⓚ', 'l': 'ⓛ', 'm': 'ⓜ', 'n': 'ⓝ', 'o': 'ⓞ', 'p': 'ⓟ',
+                        'q': 'ⓠ', 'r': 'ⓡ', 's': 'ⓢ', 't': 'ⓣ', 'u': 'ⓤ', 'v': 'ⓥ', 'w': 'ⓦ', 'x': 'ⓧ',
+                        'y': 'ⓨ', 'z': 'ⓩ', 'A': 'Ⓐ', 'B': 'Ⓑ', 'C': 'Ⓒ', 'D': 'Ⓓ', 'E': 'Ⓔ', 'F': 'Ⓕ',
+                        'G': 'Ⓖ', 'H': 'Ⓗ', 'I': 'Ⓘ', 'J': 'Ⓙ', 'K': 'Ⓚ', 'L': 'Ⓛ', 'M': 'Ⓜ', 'N': 'Ⓝ',
+                        'O': 'Ⓞ', 'P': 'Ⓟ', 'Q': 'Ⓠ', 'R': 'Ⓡ', 'S': 'Ⓢ', 'T': 'Ⓣ', 'U': 'Ⓤ', 'V': 'Ⓥ',
+                        'W': 'Ⓦ', 'X': 'Ⓧ', 'Y': 'Ⓨ', 'Z': 'Ⓩ'
+                    };
+                    return text.split('').map(char => bubblesMap[char] || char).join('');
+                }
+            },
+            {
+                name: 'uʍop ǝpᴉsdn',
+                color: 'linear-gradient(135deg, #14b8a6, #84cc16)',
+                transform: text => {
+                    const upsideDownMap = {
+                        'a': 'ɐ', 'b': 'q', 'c': 'ɔ', 'd': 'p', 'e': 'ǝ', 'f': 'ɟ', 'g': 'ƃ', 'h': 'ɥ',
+                        'i': 'ᴉ', 'j': 'ɾ', 'k': 'ʞ', 'l': 'l', 'm': 'ɯ', 'n': 'u', 'o': 'o', 'p': 'd',
+                        'q': 'b', 'r': 'ɹ', 's': 's', 't': 'ʇ', 'u': 'n', 'v': 'ʌ', 'w': 'ʍ', 'x': 'x',
+                        'y': 'ʎ', 'z': 'z', 'A': '∀', 'B': 'q', 'C': 'Ɔ', 'D': 'p', 'E': 'Ǝ', 'F': 'Ⅎ',
+                        'G': 'פ', 'H': 'H', 'I': 'I', 'J': 'ſ', 'K': 'ʞ', 'L': '˥', 'M': 'W', 'N': 'N',
+                        'O': 'O', 'P': 'Ԁ', 'Q': 'Q', 'R': 'ɹ', 'S': 'S', 'T': '┴', 'U': '∩', 'V': 'Λ',
+                        'W': 'M', 'X': 'X', 'Y': '⅄', 'Z': 'Z', '0': '0', '1': 'Ɩ', '2': 'ᄅ',
+                        '3': 'Ɛ', '4': 'ㄣ', '5': 'ϛ', '6': '9', '7': 'ㄥ', '8': '8', '9': '6',
+                        '.': '˙', ',': '\'', '\'': ',', '"': '„', '`': ',', '?': '¿', '!': '¡',
+                        '(': ')', ')': '(', '[': ']', ']': '[', '{': '}', '}': '{', '<': '>', '>': '<',
+                        '&': '⅋', '_': '‾'
+                    };
+                    return text.toLowerCase().split('').map(char => upsideDownMap[char] || char).reverse().join('');
+                }
+            },
+            {
+                name: 'v a p o r w a v e',
+                color: 'linear-gradient(135deg, #d946ef, #f43f5e)',
+                transform: text => {
+                    const vaporwaveMap = {
+                        'a': 'ａ', 'b': 'ｂ', 'c': 'ｃ', 'd': 'ｄ', 'e': 'ｅ', 'f': 'ｆ', 'g': 'ｇ', 'h': 'ｈ',
+                        'i': 'ｉ', 'j': 'ｊ', 'k': 'ｋ', 'l': 'ｌ', 'm': 'ｍ', 'n': 'ｎ', 'o': 'ｏ', 'p': 'ｐ',
+                        'q': 'ｑ', 'r': 'ｒ', 's': 'ｓ', 't': 'ｔ', 'u': 'ｕ', 'v': 'ｖ', 'w': 'ｗ', 'x': 'ｘ',
+                        'y': 'ｙ', 'z': 'ｚ', 'A': 'Ａ', 'B': 'Ｂ', 'C': 'Ｃ', 'D': 'Ｄ', 'E': 'Ｅ', 'F': 'Ｆ',
+                        'G': 'Ｇ', 'H': 'Ｈ', 'I': 'Ｉ', 'J': 'Ｊ', 'K': 'Ｋ', 'L': 'Ｌ', 'M': 'Ｍ', 'N': 'Ｎ',
+                        'O': 'Ｏ', 'P': 'Ｐ', 'Q': 'Ｑ', 'R': 'Ｒ', 'S': 'Ｓ', 'T': 'Ｔ', 'U': 'Ｕ', 'V': 'Ｖ',
+                        'W': 'Ｗ', 'X': 'Ｘ', 'Y': 'Ｙ', 'Z': 'Ｚ', '0': '０', '1': '１', '2': '２', '3': '３',
+                        '4': '４', '5': '５', '6': '６', '7': '７', '8': '８', '9': '９', ' ': '　',
+                        '!': '！', '@': '＠', '#': '＃', '$': '＄', '%': '％', '^': '＾', '&': '＆',
+                        '*': '＊', '(': '（', ')': '）', '-': '－', '_': '＿', '=': '＝', '+': '＋',
+                        '[': '［', ']': '］', '{': '｛', '}': '｝', ';': '；', ':': '：', "'": '＇',
+                        '"': '＂', ',': '，', '.': '．', '/': '／', '?': '？', '\\': '＼', '|': '｜',
+                        '<': '＜', '>': '＞', '`': '｀', '~': '～'
+                    };
+                    return text.split('').map(char => vaporwaveMap[char] || char).join(' ');
+                }
+            },
+            {
+                name: '𝗕𝗢𝗟𝗗 𝗦𝗔𝗡𝗦',
+                color: 'linear-gradient(135deg, #0ea5e9, #6366f1)',
+                transform: text => {
+                    const boldSansMap = {
+                        'a': '𝗮', 'b': '𝗯', 'c': '𝗰', 'd': '𝗱', 'e': '𝗲', 'f': '𝗳', 'g': '𝗴', 'h': '𝗵',
+                        'i': '𝗶', 'j': '𝗷', 'k': '𝗸', 'l': '𝗹', 'm': '𝗺', 'n': '𝗻', 'o': '𝗼', 'p': '𝗽',
+                        'q': '𝗾', 'r': '𝗿', 's': '𝘀', 't': '𝘁', 'u': '𝘂', 'v': '𝘃', 'w': '𝘄', 'x': '𝘅',
+                        'y': '𝘆', 'z': '𝘇', 'A': '𝗔', 'B': '𝗕', 'C': '𝗖', 'D': '𝗗', 'E': '𝗘', 'F': '𝗙',
+                        'G': '𝗚', 'H': '𝗛', 'I': '𝗜', 'J': '𝗝', 'K': '𝗞', 'L': '𝗟', 'M': '𝗠', 'N': '𝗡',
+                        'O': '𝗢', 'P': '𝗣', 'Q': '𝗤', 'R': '𝗥', 'S': '𝗦', 'T': '𝗧', 'U': '𝗨', 'V': '𝗩',
+                        'W': '𝗪', 'X': '𝗫', 'Y': '𝗬', 'Z': '𝗭'
+                    };
+                    return text.split('').map(char => boldSansMap[char] || char).join('');
+                }
+            },
+            {
+                name: '𝘐𝘵𝘢𝘭𝘪𝘤',
+                color: 'linear-gradient(135deg, #0891b2, #4ade80)',
+                transform: text => {
+                    const italicMap = {
+                        'a': '𝘢', 'b': '𝘣', 'c': '𝘤', 'd': '𝘥', 'e': '𝘦', 'f': '𝘧', 'g': '𝘨', 'h': '𝘩',
+                        'i': '𝘪', 'j': '𝘫', 'k': '𝘬', 'l': '𝘭', 'm': '𝘮', 'n': '𝘯', 'o': '𝘰', 'p': '𝘱',
+                        'q': '𝘲', 'r': '𝘳', 's': '𝘴', 't': '𝘵', 'u': '𝘶', 'v': '𝘷', 'w': '𝘸', 'x': '𝘹',
+                        'y': '𝘺', 'z': '𝘻', 'A': '𝘈', 'B': '𝘉', 'C': '𝘊', 'D': '𝘋', 'E': '𝘌', 'F': '𝘍',
+                        'G': '𝘎', 'H': '𝘏', 'I': '𝘐', 'J': '𝘑', 'K': '𝘒', 'L': '𝘓', 'M': '𝘔', 'N': '𝘕',
+                        'O': '𝘖', 'P': '𝘗', 'Q': '𝘘', 'R': '𝘙', 'S': '𝘚', 'T': '𝘛', 'U': '𝘜', 'V': '𝘝',
+                        'W': '𝘞', 'X': '𝘟', 'Y': '𝘠', 'Z': '𝘡'
+                    };
+                    return text.split('').map(char => italicMap[char] || char).join('');
+                }
+            },
+            {
+                name: '𝙎𝙖𝙣𝙨 𝙄𝙩𝙖𝙡𝙞𝙘',
+                color: 'linear-gradient(135deg, #f43f5e, #fb7185)',
+                transform: text => {
+                    const sansItalicMap = {
+                        'a': '𝙖', 'b': '𝙗', 'c': '𝙘', 'd': '𝙙', 'e': '𝙚', 'f': '𝙛', 'g': '𝙜', 'h': '𝙝',
+                        'i': '𝙞', 'j': '𝙟', 'k': '𝙠', 'l': '𝙡', 'm': '𝙢', 'n': '𝙣', 'o': '𝙤', 'p': '𝙥',
+                        'q': '𝙦', 'r': '𝙧', 's': '𝙨', 't': '𝙩', 'u': '𝙪', 'v': '𝙫', 'w': '𝙬', 'x': '𝙭',
+                        'y': '𝙮', 'z': '𝙯', 'A': '𝘼', 'B': '𝘽', 'C': '𝘾', 'D': '𝘿', 'E': '𝙀', 'F': '𝙁',
+                        'G': '𝙂', 'H': '𝙃', 'I': '𝙄', 'J': '𝙅', 'K': '𝙆', 'L': '𝙇', 'M': '𝙈', 'N': '𝙉',
+                        'O': '𝙊', 'P': '𝙋', 'Q': '𝙌', 'R': '𝙍', 'S': '𝙎', 'T': '𝙏', 'U': '𝙐', 'V': '𝙑',
+                        'W': '𝙒', 'X': '𝙓', 'Y': '𝙔', 'Z': '𝙕'
+                    };
+                    return text.split('').map(char => sansItalicMap[char] || char).join('');
+                }
+            },
+            {
+                name: '🅱🆄🅱🅱🅻🅴🆂 2',
+                color: 'linear-gradient(135deg, #a855f7, #ec4899)',
+                transform: text => {
+                    const bubbles2Map = {
+                        'a': '🅰', 'b': '🅱', 'c': '🅲', 'd': '🅳', 'e': '🅴', 'f': '🅵', 'g': '🅶', 'h': '🅷',
+                        'i': '🅸', 'j': '🅹', 'k': '🅺', 'l': '🅻', 'm': '🅼', 'n': '🅽', 'o': '🅾', 'p': '🅿',
+                        'q': '🆀', 'r': '🆁', 's': '🆂', 't': '🆃', 'u': '🆄', 'v': '🆅', 'w': '🆆', 'x': '🆇',
+                        'y': '🆈', 'z': '🆉', 'A': '🅰', 'B': '🅱', 'C': '🅲', 'D': '🅳', 'E': '🅴', 'F': '🅵',
+                        'G': '🅶', 'H': '🅷', 'I': '🅸', 'J': '🅹', 'K': '🅺', 'L': '🅻', 'M': '🅼', 'N': '🅽',
+                        'O': '🅾', 'P': '🅿', 'Q': '🆀', 'R': '🆁', 'S': '🆂', 'T': '🆃', 'U': '🆄', 'V': '🆅',
+                        'W': '🆆', 'X': '🆇', 'Y': '🆈', 'Z': '🆉'
+                    };
+                    return text.split('').map(char => bubbles2Map[char] || char).join('');
+                }
+            },
+            {
+                name: 'S̸t̸r̸i̸k̸e̸t̸h̸r̸o̸u̸g̸h̸',
+                color: 'linear-gradient(135deg, #475569, #94a3b8)',
+                transform: text => {
+                    return text.split('').map(char => char + '\u0336').join('');
+                }
+            },
+            {
+                name: 'U͟n͟d͟e͟r͟l͟i͟n͟e͟d͟',
+                color: 'linear-gradient(135deg, #0f766e, #0ea5e9)',
+                transform: text => {
+                    return text.split('').map(char => char + '\u035F').join('');
+                }
+            },
+            {
+                name: 'sᴍᴀʟʟ ᴄᴀᴘs',
+                color: 'linear-gradient(135deg, #4338ca, #6366f1)',
+                transform: text => {
+                    const smallCapsMap = {
+                        'a': 'ᴀ', 'b': 'ʙ', 'c': 'ᴄ', 'd': 'ᴅ', 'e': 'ᴇ', 'f': 'ғ', 'g': 'ɢ', 'h': 'ʜ',
+                        'i': 'ɪ', 'j': 'ᴊ', 'k': 'ᴋ', 'l': 'ʟ', 'm': 'ᴍ', 'n': 'ɴ', 'o': 'ᴏ', 'p': 'ᴘ',
+                        'q': 'ǫ', 'r': 'ʀ', 's': 's', 't': 'ᴛ', 'u': 'ᴜ', 'v': 'ᴠ', 'w': 'ᴡ', 'x': 'x',
+                        'y': 'ʏ', 'z': 'ᴢ'
+                    };
+                    return text.toLowerCase().split('').map(char => smallCapsMap[char] || char).join('');
+                }
+            },
+            {
+                name: '𝖒𝖊𝖉𝖎𝖊𝖛𝖆𝖑',
+                color: 'linear-gradient(135deg, #b45309, #d97706)',
+                transform: text => {
+                    const medievalMap = {
+                        'a': '𝖆', 'b': '𝖇', 'c': '𝖈', 'd': '𝖉', 'e': '𝖊', 'f': '𝖋', 'g': '𝖌', 'h': '𝖍',
+                        'i': '𝖎', 'j': '𝖏', 'k': '𝖐', 'l': '𝖑', 'm': '𝖒', 'n': '𝖓', 'o': '𝖔', 'p': '𝖕',
+                        'q': '𝖖', 'r': '𝖗', 's': '𝖘', 't': '𝖙', 'u': '𝖚', 'v': '𝖛', 'w': '𝖜', 'x': '𝖝',
+                        'y': '𝖞', 'z': '𝖟', 'A': '𝕬', 'B': '𝕭', 'C': '𝕮', 'D': '𝕯', 'E': '𝕰', 'F': '𝕱',
+                        'G': '𝕲', 'H': '𝕳', 'I': '𝕴', 'J': '𝕵', 'K': '𝕶', 'L': '𝕷', 'M': '𝕸', 'N': '𝕹',
+                        'O': '𝕺', 'P': '𝕻', 'Q': '𝕼', 'R': '𝕽', 'S': '𝕾', 'T': '𝕿', 'U': '𝖀', 'V': '𝖁',
+                        'W': '𝖂', 'X': '𝖃', 'Y': '𝖄', 'Z': '𝖅'
+                    };
+                    return text.split('').map(char => medievalMap[char] || char).join('');
+                }
+            },
+            {
+                name: '𝑆𝑒𝑟𝑖𝑓 𝐼𝑡𝑎𝑙𝑖𝑐',
+                color: 'linear-gradient(135deg, #9333ea, #c084fc)',
+                transform: text => {
+                    const serifItalicMap = {
+                        'a': '𝑎', 'b': '𝑏', 'c': '𝑐', 'd': '𝑑', 'e': '𝑒', 'f': '𝑓', 'g': '𝑔', 'h': 'ℎ',
+                        'i': '𝑖', 'j': '𝑗', 'k': '𝑘', 'l': '𝑙', 'm': '𝑚', 'n': '𝑛', 'o': '𝑜', 'p': '𝑝',
+                        'q': '𝑞', 'r': '𝑟', 's': '𝑠', 't': '𝑡', 'u': '𝑢', 'v': '𝑣', 'w': '𝑤', 'x': '𝑥',
+                        'y': '𝑦', 'z': '𝑧', 'A': '𝐴', 'B': '𝐵', 'C': '𝐶', 'D': '𝐷', 'E': '𝐸', 'F': '𝐹',
+                        'G': '𝐺', 'H': '𝐻', 'I': '𝐼', 'J': '𝐽', 'K': '𝐾', 'L': '𝐿', 'M': '𝑀', 'N': '𝑁',
+                        'O': '𝑂', 'P': '𝑃', 'Q': '𝑄', 'R': '𝑅', 'S': '𝑆', 'T': '𝑇', 'U': '𝑈', 'V': '𝑉',
+                        'W': '𝑊', 'X': '𝑋', 'Y': '𝑌', 'Z': '𝑍'
+                    };
+                    return text.split('').map(char => serifItalicMap[char] || char).join('');
+                }
+            },
+            {
+                name: '𝒮𝒸𝓇𝒾𝓅𝓉',
+                color: 'linear-gradient(135deg, #059669, #34d399)',
+                transform: text => {
+                    const scriptMap = {
+                        'a': '𝒶', 'b': '𝒷', 'c': '𝒸', 'd': '𝒹', 'e': 'ℯ', 'f': '𝒻', 'g': 'ℊ', 'h': '𝒽',
+                        'i': '𝒾', 'j': '𝒿', 'k': '𝓀', 'l': '𝓁', 'm': '𝓂', 'n': '𝓃', 'o': 'ℴ', 'p': '𝓅',
+                        'q': '𝓆', 'r': '𝓇', 's': '𝓈', 't': '𝓉', 'u': '𝓊', 'v': '𝓋', 'w': '𝓌', 'x': '𝓍',
+                        'y': '𝓎', 'z': '𝓏', 'A': '𝒜', 'B': 'ℬ', 'C': '𝒞', 'D': '𝒟', 'E': 'ℰ', 'F': 'ℱ',
+                        'G': '𝒢', 'H': 'ℋ', 'I': 'ℐ', 'J': '𝒥', 'K': '𝒦', 'L': 'ℒ', 'M': 'ℳ', 'N': '𝒩',
+                        'O': '𝒪', 'P': '𝒫', 'Q': '𝒬', 'R': 'ℛ', 'S': '𝒮', 'T': '𝒯', 'U': '𝒰', 'V': '𝒱',
+                        'W': '𝒲', 'X': '𝒳', 'Y': '𝒴', 'Z': '𝒵'
+                    };
+                    return text.split('').map(char => scriptMap[char] || char).join('');
+                }
+            },
+            {
+                name: 'Squiggle 1',
+                color: 'linear-gradient(135deg, #6366f1, #a5b4fc)',
+                transform: text => {
+                    const map = 'αբcդҽֆգհíջկլմնօփքրsթւվվxյզԱԲCԴԷՖԳՀԻՋԿԼՄՆՕՓՔՌՍՏՒՎՎXՅԶ';
+                    const normal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    return text.split('').map(c => {
+                        const i = normal.indexOf(c);
+                        return i !== -1 && i < map.length ? map[i] : c;
+                    }).join('');
+                }
+            },
+            {
+                name: 'Crazy 1',
+                color: 'linear-gradient(135deg, #db2777, #f472b6)',
+                transform: text => {
+                    const map = 'ꍏ♭☾◗€Ϝ❡♄♗♪ϰ↳♔♫⊙ρ☭☈ⓢ☂☋☡ω❡❡❡ꍏ♭☾◗€Ϝ❡♄♗♪ϰ↳♔♫⊙ρ☭☈ⓢ☂☋☡ω❡❡❡';
+                    const normal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    return text.split('').map(c => {
+                        const i = normal.indexOf(c);
+                        return i !== -1 && i < map.length ? map[i] : c;
+                    }).join('');
+                }
+            },
+            {
+                name: 'Fireworks Text',
+                color: 'linear-gradient(135deg, #facc15, #fcd34d)',
+                transform: text => {
+                    return text.split('').map(c => `${c}҉`).join('');
+                }
+            },
+            {
+                name: 'Stinky Text',
+                color: 'linear-gradient(135deg, #4ade80, #86efac)',
+                transform: text => {
+                    return text.split('').map(c => `${c}̾`).join('');
+                }
+            },
+            {
+                name: 'Seagull Text',
+                color: 'linear-gradient(135deg, #60a5fa, #93c5fd)',
+                transform: text => {
+                    return text.split('').map(c => `${c}̼`).join('');
+                }
+            },
+            {
+                name: 'Frame Text',
+                color: 'linear-gradient(135deg, #ec4899, #f9a8d4)',
+                transform: text => {
+                    return text.split('').map(c => `${c}̺͆`).join('');
+                }
+            },
+            {
+                name: 'Bracket Text',
+                color: 'linear-gradient(135deg, #10b981, #6ee7b7)',
+                transform: text => {
+                    return text.split('').map(c => `『${c}』`).join('');
+                }
+            },
+            {
+                name: 'Dark Bracket Text',
+                color: 'linear-gradient(135deg, #374151, #9ca3af)',
+                transform: text => {
+                    return text.split('').map(c => `【${c}】`).join('');
+                }
+            },
+            {
+                name: 'Asian-like Text',
+                color: 'linear-gradient(135deg, #fb923c, #fdba74)',
+                transform: text => {
+                    const map = '卂乃匚ᗪ乇千Ꮆ卄丨ﾌҜㄥ爪几ㄖ卩Ɋ尺丂ㄒㄩᐯ山乂ㄚ乙ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    const normal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    return text.split('').map(c => {
+                        const i = normal.indexOf(c);
+                        return i !== -1 && i < map.length ? map[i] : c;
+                    }).join('');
+                }
+            },
+            {
+                name: 'Tribal-like Text',
+                color: 'linear-gradient(135deg, #8b5cf6, #c4b5fd)',
+                transform: text => {
+                    const map = 'ꍏꌃꉓꀸꍟꎇꁅꃅꀤꀭꀘ꒒ꂵꈤꂦꉣꆰꋪꌗ꓄ꀎꁴꅏꍏꌃꉓABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    const normal = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+                    return text.split('').map(c => {
+                        const i = normal.indexOf(c);
+                        return i !== -1 && i < map.length ? map[i] : c;
+                    }).join('');
+                }
+            }
+        ];
+
+        // Function to create a fancy text card
+        function createFancyTextCard(style, text) {
+            const transformedText = style.transform(text);
+
+            const card = document.createElement('div');
+            card.className = 'text-card bg-white dark:bg-gray-800 rounded-lg shadow-md overflow-hidden transition-all duration-300';
+
+            const header = document.createElement('div');
+            header.className = 'style-header';
+            header.style.background = style.color;
+            header.textContent = style.name;
+
+            const content = document.createElement('div');
+            content.className = 'p-4 flex justify-between items-center';
+
+            const textContent = document.createElement('div');
+            textContent.className = 'fancy-text-content break-words text-gray-800 dark:text-white';
+            textContent.textContent = transformedText;
+
+            const copyButton = document.createElement('button');
+            copyButton.className = 'copy-btn ml-2 p-2 bg-purple-100 dark:bg-purple-900 text-purple-600 dark:text-purple-300 rounded-full hover:bg-purple-200 dark:hover:bg-purple-800 transition-all duration-300 flex-shrink-0';
+            copyButton.innerHTML = '<i class="fas fa-copy"></i>';
+            copyButton.addEventListener('click', () => {
+                navigator.clipboard.writeText(transformedText).then(() => {
+                    showCopyNotification();
+                });
+            });
+
+            content.appendChild(textContent);
+            content.appendChild(copyButton);
+
+            card.appendChild(header);
+            card.appendChild(content);
+
+            return card;
+        }
+
+        // Function to show copy notification
+        function showCopyNotification() {
+            copyNotification.classList.add('show-notification');
+            setTimeout(() => {
+                copyNotification.classList.remove('show-notification');
+            }, 2000);
+        }
+
+        // Function to generate all fancy text styles
+        function generateFancyText() {
+            const text = inputText.value.trim() || 'Type something...';
+            resultsContainer.innerHTML = '';
+
+            fancyTextStyles.forEach(style => {
+                const card = createFancyTextCard(style, text);
+                resultsContainer.appendChild(card);
+            });
+        }
+
+        // Event listeners
+        inputText.addEventListener('input', generateFancyText);
+
+        // Theme toggle
+        themeToggle.addEventListener('change', () => {
+            if (themeToggle.checked) {
+                body.classList.add('dark');
+                body.classList.remove('light');
+            } else {
+                body.classList.add('light');
+                body.classList.remove('dark');
+            }
+        });
+
+        // Generate initial text
+        generateFancyText();
+    </script>
+</body>
+
+</html>
